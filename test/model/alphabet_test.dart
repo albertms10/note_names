@@ -164,5 +164,19 @@ void main() {
         expect(Alphabet.alphabets, const TypeMatcher<List<Alphabet>>());
       });
     });
+
+    group('.hashCode', () {
+      test('should remove duplicates in a Set', () {
+        final collection = {
+          // ignore: prefer_const_constructors
+          Alphabet.latinNaturalOrder(),
+          // ignore: prefer_const_constructors
+          Alphabet.latinNaturalOrder1(),
+          // ignore: prefer_const_constructors
+          Alphabet.latinNaturalOrder(),
+        };
+        expect(collection.length, 2);
+      });
+    });
   });
 }

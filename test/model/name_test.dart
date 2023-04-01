@@ -19,6 +19,12 @@ void main() {
     group('.numericValue', () {
       test('should return the numeric value of this name', () {
         expect(const Name('ABC').numericValue, 6);
+
+        const alphabet = Alphabet(
+          name: 'Alphabet 1',
+          letterToNumber: {'A': 2, 'B': 4, 'C': 6},
+        );
+        expect(const Name('ABC', alphabet: alphabet).numericValue, 12);
       });
     });
 
@@ -42,6 +48,20 @@ void main() {
           expect(copiedName.alphabet, alphabet);
         },
       );
+    });
+
+    group('.hashCode', () {
+      test('should remove duplicates in a Set', () {
+        final collection = {
+          // ignore: prefer_const_constructors
+          Name('ABC'),
+          // ignore: prefer_const_constructors
+          Name('XYZ'),
+          // ignore: prefer_const_constructors
+          Name('ABC'),
+        };
+        expect(collection.length, 2);
+      });
     });
   });
 }
