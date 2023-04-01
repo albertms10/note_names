@@ -19,10 +19,11 @@ class AlphabetDropdown extends StatelessWidget {
       padding: const EdgeInsetsDirectional.only(top: 16),
       child: Align(
         alignment: AlignmentDirectional.topStart,
-        child: DropdownButton(
+        child: DropdownButtonFormField(
           items: [
             for (final alphabet in Alphabet.alphabets)
               DropdownMenuItem(
+                key: ValueKey(alphabet.name),
                 value: alphabet,
                 child: _AlphabetDropdownMenuItem(
                   name: name.name,
@@ -32,6 +33,7 @@ class AlphabetDropdown extends StatelessWidget {
           ],
           value: name.alphabet,
           onChanged: onAlphabetChanged,
+          decoration: const InputDecoration.collapsed(hintText: 'Alphabet'),
         ),
       ),
     );
@@ -73,13 +75,15 @@ class _AlphabetDropdownMenuItem extends StatelessWidget {
                   alphabet.name,
                   style: TextStyle(
                     color: theme.colorScheme.primary,
+                    fontSize: 14,
                   ),
                 ),
-                const SizedBox(width: 12),
+                const SizedBox(width: 14),
                 Text(
                   '${alphabet.valueOfName(name)}',
                   style: TextStyle(
                     color: theme.colorScheme.primary.withOpacity(0.6),
+                    fontSize: 14,
                     fontWeight: FontWeight.w400,
                   ),
                 ),

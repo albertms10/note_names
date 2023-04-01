@@ -42,6 +42,7 @@ class _NameSectionState extends State<NameSection> {
             clipBehavior: Clip.antiAlias,
             child: Stack(
               children: [
+                _NameSectionValue(value: name.value, color: color),
                 Padding(
                   padding: const EdgeInsetsDirectional.only(
                     top: 12,
@@ -50,15 +51,17 @@ class _NameSectionState extends State<NameSection> {
                   ),
                   child: NameLabels(name: name),
                 ),
-                AlphabetDropdown(
-                  name: name,
-                  onAlphabetChanged: (alphabet) {
-                    setState(() {
-                      name = name.copyWith(alphabet: alphabet);
-                    });
-                  },
+                SizedBox(
+                  width: 250,
+                  child: AlphabetDropdown(
+                    name: name,
+                    onAlphabetChanged: (alphabet) {
+                      setState(() {
+                        name = name.copyWith(alphabet: alphabet);
+                      });
+                    },
+                  ),
                 ),
-                _NameSectionValue(value: name.value, color: color),
               ],
             ),
           );
