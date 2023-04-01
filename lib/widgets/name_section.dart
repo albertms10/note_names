@@ -20,6 +20,13 @@ class _NameSectionState extends State<NameSection> {
 
   @override
   Widget build(BuildContext context) {
+    const contentPadding = EdgeInsetsDirectional.only(
+      start: 36,
+      top: 12,
+      end: 320,
+      bottom: 12,
+    );
+
     return Theme(
       data: Theme.of(context).copyWith(
         colorScheme: ColorScheme.fromSeed(
@@ -52,15 +59,19 @@ class _NameSectionState extends State<NameSection> {
                 Center(
                   child: FittedBox(
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.only(
-                        start: 36,
-                        top: 12,
-                        end: 320,
-                        bottom: 12,
-                      ),
+                      padding: contentPadding,
                       child: NameLabels(name: name),
                     ),
                   ),
+                ),
+                _NameSectionTextField(
+                  name: name.name,
+                  contentPadding: contentPadding,
+                  onChanged: (value) {
+                    setState(() {
+                      name = name.copyWith(name: value);
+                    });
+                  },
                 ),
                 Container(
                   width: 250,
@@ -105,6 +116,76 @@ class _NameSectionValue extends StatelessWidget {
           letterSpacing: -8,
         ),
       ),
+    );
+  }
+}
+
+class _NameSectionTextField extends StatefulWidget {
+  final String? name;
+  final EdgeInsetsGeometry? contentPadding;
+  final void Function(String? value)? onChanged;
+
+  const _NameSectionTextField({
+    super.key,
+    this.name,
+    this.contentPadding,
+    this.onChanged,
+  });
+
+  @override
+  State<_NameSectionTextField> createState() => _NameSectionTextFieldState();
+}
+
+class _NameSectionTextFieldState extends State<_NameSectionTextField> {
+  late final TextEditingController _controller =
+      TextEditingController(text: widget.name);
+
+  late final FocusNode _focusNode = FocusNode()..addListener(_onFocusChange);
+  final ValueNotifier<bool> _focusNotifier = ValueNotifier<bool>(false);
+
+  @override
+  void dispose() {
+    _focusNode
+      ..removeListener(_onFocusChange)
+      ..dispose();
+    _focusNotifier.dispose();
+    super.dispose();
+  }
+
+  void _onFocusChange() {
+    _focusNotifier.value = _focusNode.hasFocus;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final color = theme.colorScheme.primary;
+
+    return ValueListenableBuilder(
+      valueListenable: _focusNotifier,
+      builder: (context, isFocused, child) {
+        return TextField(
+          controller: _controller,
+          focusNode: _focusNode,
+          decoration: InputDecoration(
+            hintText: 'Type a name',
+            contentPadding: widget.contentPadding,
+            filled: true,
+            fillColor: isFocused ? color.withOpacity(0.15) : Colors.transparent,
+            hoverColor: color.withOpacity(0.05),
+            border: InputBorder.none,
+          ),
+          style: const TextStyle(color: Colors.transparent),
+          textAlign: TextAlign.center,
+          textAlignVertical: TextAlignVertical.center,
+          showCursor: false,
+          autocorrect: false,
+          maxLines: null,
+          expands: true,
+          onChanged: widget.onChanged,
+          enableInteractiveSelection: false,
+        );
+      },
     );
   }
 }
