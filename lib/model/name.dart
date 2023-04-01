@@ -15,4 +15,11 @@ class Name {
         name ?? this.name,
         alphabet: alphabet ?? this.alphabet,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      other is Name && name == other.name && alphabet == other.alphabet;
+
+  @override
+  int get hashCode => Object.hash(name, alphabet.hashCode);
 }

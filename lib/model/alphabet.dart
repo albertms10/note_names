@@ -149,4 +149,13 @@ class Alphabet {
         (previousValue, letter) =>
             previousValue + (numericValueOfLetter(letter) ?? 0),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      other is Alphabet &&
+      name == other.name &&
+      _letterToNumber == other._letterToNumber;
+
+  @override
+  int get hashCode => Object.hash(name, _letterToNumber);
 }
