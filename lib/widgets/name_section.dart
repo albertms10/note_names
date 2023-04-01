@@ -46,7 +46,7 @@ class _NameSectionState extends State<NameSection> {
                   child: Container(
                     padding: const EdgeInsetsDirectional.only(end: 36),
                     width: MediaQuery.of(context).size.width / 4,
-                    child: _NameSectionValue(value: name.value, color: color),
+                    child: _NameSectionValue(value: name.value),
                   ),
                 ),
                 Center(
@@ -85,17 +85,13 @@ class _NameSectionState extends State<NameSection> {
 
 class _NameSectionValue extends StatelessWidget {
   final int value;
-  final Color color;
 
-  const _NameSectionValue({
-    super.key,
-    required this.value,
-    required this.color,
-  });
+  const _NameSectionValue({super.key, required this.value});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final color = theme.colorScheme.primary;
 
     return FittedBox(
       fit: BoxFit.scaleDown,
