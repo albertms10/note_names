@@ -13,15 +13,17 @@ class NameLabels extends StatelessWidget {
       child: Wrap(
         alignment: WrapAlignment.center,
         runSpacing: 8,
+        crossAxisAlignment: WrapCrossAlignment.end,
         children: [
-          for (final letter in name.name.characters)
-            if (name.alphabet.containsLetter(letter))
-              AlphabetLetter(
-                letter: letter,
-                value: name.alphabet.valueOfLetter(letter),
-              )
+          for (final character in name.name.characters)
+            if (character == ' ')
+              const SizedBox(width: 24)
             else
-              const SizedBox(width: 24),
+              AlphabetLetter(
+                letter: character,
+                value: name.alphabet.valueOfLetter(character),
+                isDimmed: !name.alphabet.containsLetter(character),
+              ),
         ],
       ),
     );

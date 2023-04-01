@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:note_names/utils/int_extension.dart';
 
 class AlphabetLetter extends StatelessWidget {
   final String letter;
   final int? value;
+  final bool isDimmed;
 
-  const AlphabetLetter({super.key, required this.letter, this.value});
+  const AlphabetLetter({
+    super.key,
+    required this.letter,
+    this.value,
+    this.isDimmed = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final onPrimary = theme.colorScheme.primary.withOpacity(0.8);
+    final primaryBackground =
+        theme.colorScheme.primary.withOpacity(isDimmed ? 0.2 : 0.35);
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 4),
@@ -22,7 +32,7 @@ class AlphabetLetter extends StatelessWidget {
             horizontal: 18,
           ),
           decoration: BoxDecoration(
-            color: theme.colorScheme.primary.withOpacity(0.4),
+            color: primaryBackground,
             borderRadius: const BorderRadius.all(Radius.circular(12)),
           ),
           child: Column(
@@ -30,10 +40,21 @@ class AlphabetLetter extends StatelessWidget {
             children: [
               Text(
                 letter.toUpperCase(),
-                style: theme.textTheme.displayLarge
-                    ?.copyWith(fontWeight: FontWeight.w300),
+                style: (isDimmed
+                        ? theme.textTheme.displaySmall
+                        : theme.textTheme.displayLarge)
+                    ?.copyWith(
+                  fontWeight: FontWeight.w300,
+                  color: onPrimary,
+                ),
               ),
-              Text(value != null ? '$value' : ''),
+              Text(
+                value != null ? '$value' : '',
+                style: TextStyle(
+                  color: onPrimary,
+                  fontWeight: value?.isPrime ?? false ? FontWeight.w800 : null,
+                ),
+              ),
             ],
           ),
         ),
