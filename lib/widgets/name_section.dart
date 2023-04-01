@@ -30,7 +30,7 @@ class _NameSectionState extends State<NameSection> {
     return Theme(
       data: Theme.of(context).copyWith(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: NameSection.colorFromValue(name.value),
+          seedColor: NameSection.colorFromValue(name.numericValue),
         ),
       ),
       child: Builder(
@@ -53,7 +53,7 @@ class _NameSectionState extends State<NameSection> {
                   child: Container(
                     padding: const EdgeInsetsDirectional.only(end: 36),
                     width: MediaQuery.of(context).size.width / 4,
-                    child: _NameSectionValue(value: name.value),
+                    child: _NameSectionValue(value: name.numericValue),
                   ),
                 ),
                 Center(

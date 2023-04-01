@@ -21,7 +21,7 @@ class NameLabels extends StatelessWidget {
             else
               AlphabetLetter(
                 letter: character,
-                value: name.alphabet.valueOfLetter(character),
+                value: name.alphabet.numericValueOfLetter(character),
                 isDimmed: !name.alphabet.containsLetter(character),
               ),
         ],

@@ -139,13 +139,23 @@ class Alphabet {
     Alphabet.latinNaturalOrder3(),
   ];
 
-  int? valueOfLetter(String letter) =>
+  int? numericValueOfLetter(String letter) =>
       _letterToNumber[removeDiacritics(letter).toUpperCase()];
 
-  bool containsLetter(String letter) => valueOfLetter(letter) != null;
+  bool containsLetter(String letter) => numericValueOfLetter(letter) != null;
 
-  int valueOfName(String name) => name.characters.fold(
+  int numericValueOfName(String name) => name.characters.fold(
         0,
-        (previousValue, letter) => previousValue + (valueOfLetter(letter) ?? 0),
+        (previousValue, letter) =>
+            previousValue + (numericValueOfLetter(letter) ?? 0),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      other is Alphabet &&
+      name == other.name &&
+      _letterToNumber == other._letterToNumber;
+
+  @override
+  int get hashCode => Object.hash(name, _letterToNumber);
 }
