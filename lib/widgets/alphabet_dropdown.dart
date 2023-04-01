@@ -60,7 +60,7 @@ class _AlphabetDropdownMenuItem extends StatelessWidget {
         data: theme.copyWith(
           colorScheme: ColorScheme.fromSeed(
             seedColor: NameSection.colorFromValue(
-              alphabet.valueOfName(name),
+              alphabet.numericValueOfName(name),
             ),
           ),
         ),
@@ -80,7 +80,7 @@ class _AlphabetDropdownMenuItem extends StatelessWidget {
                 ),
                 const SizedBox(width: 14),
                 Text(
-                  '${alphabet.valueOfName(name)}',
+                  '${alphabet.numericValueOfName(name)}',
                   style: TextStyle(
                     color: theme.colorScheme.primary.withOpacity(0.6),
                     fontSize: 14,

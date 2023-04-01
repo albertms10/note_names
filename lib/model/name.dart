@@ -9,7 +9,7 @@ class Name {
     this.alphabet = const Alphabet.latinNaturalOrder1(),
   });
 
-  int get value => alphabet.valueOfName(name);
+  int get numericValue => alphabet.numericValueOfName(name);
 
   Name copyWith({String? name, Alphabet? alphabet}) => Name(
         name ?? this.name,
