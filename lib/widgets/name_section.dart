@@ -32,7 +32,6 @@ class _NameSectionState extends State<NameSection> {
           final color = theme.colorScheme.primary;
 
           return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 36),
             decoration: BoxDecoration(
               color: color.withOpacity(0.1),
               border: Border(
@@ -44,12 +43,17 @@ class _NameSectionState extends State<NameSection> {
               children: [
                 Align(
                   alignment: AlignmentDirectional.centerEnd,
-                  child: _NameSectionValue(value: name.value, color: color),
+                  child: Container(
+                    padding: const EdgeInsetsDirectional.only(end: 36),
+                    width: MediaQuery.of(context).size.width / 4,
+                    child: _NameSectionValue(value: name.value, color: color),
+                  ),
                 ),
                 Center(
                   child: FittedBox(
                     child: Padding(
                       padding: const EdgeInsetsDirectional.only(
+                        start: 36,
                         top: 12,
                         end: 320,
                         bottom: 12,
@@ -58,8 +62,9 @@ class _NameSectionState extends State<NameSection> {
                     ),
                   ),
                 ),
-                SizedBox(
+                Container(
                   width: 250,
+                  margin: const EdgeInsetsDirectional.only(start: 36),
                   child: AlphabetDropdown(
                     name: name,
                     onAlphabetChanged: (alphabet) {
@@ -92,19 +97,16 @@ class _NameSectionValue extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return SizedBox(
-      width: MediaQuery.of(context).size.width / 4,
-      child: FittedBox(
-        fit: BoxFit.scaleDown,
-        alignment: AlignmentDirectional.centerEnd,
-        child: Text(
-          '$value',
-          style: theme.textTheme.displayLarge?.copyWith(
-            fontSize: 200,
-            fontWeight: FontWeight.w100,
-            color: color.withOpacity(0.2),
-            letterSpacing: -8,
-          ),
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      alignment: AlignmentDirectional.centerEnd,
+      child: Text(
+        '$value',
+        style: theme.textTheme.displayLarge?.copyWith(
+          fontSize: 200,
+          fontWeight: FontWeight.w100,
+          color: color.withOpacity(0.2),
+          letterSpacing: -8,
         ),
       ),
     );
