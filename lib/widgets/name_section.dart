@@ -42,14 +42,21 @@ class _NameSectionState extends State<NameSection> {
             clipBehavior: Clip.antiAlias,
             child: Stack(
               children: [
-                _NameSectionValue(value: name.value, color: color),
-                Padding(
-                  padding: const EdgeInsetsDirectional.only(
-                    top: 12,
-                    end: 320,
-                    bottom: 12,
+                Align(
+                  alignment: AlignmentDirectional.centerEnd,
+                  child: _NameSectionValue(value: name.value, color: color),
+                ),
+                Center(
+                  child: FittedBox(
+                    child: Padding(
+                      padding: const EdgeInsetsDirectional.only(
+                        top: 12,
+                        end: 320,
+                        bottom: 12,
+                      ),
+                      child: NameLabels(name: name),
+                    ),
                   ),
-                  child: NameLabels(name: name),
                 ),
                 SizedBox(
                   width: 250,
@@ -85,15 +92,19 @@ class _NameSectionValue extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Align(
-      alignment: AlignmentDirectional.centerEnd,
-      child: Text(
-        '$value',
-        style: theme.textTheme.displayLarge?.copyWith(
-          fontSize: 156,
-          fontWeight: FontWeight.w100,
-          color: color.withOpacity(0.2),
-          letterSpacing: -8,
+    return SizedBox(
+      width: MediaQuery.of(context).size.width / 4,
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        alignment: AlignmentDirectional.centerEnd,
+        child: Text(
+          '$value',
+          style: theme.textTheme.displayLarge?.copyWith(
+            fontSize: 200,
+            fontWeight: FontWeight.w100,
+            color: color.withOpacity(0.2),
+            letterSpacing: -8,
+          ),
         ),
       ),
     );
