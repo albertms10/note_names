@@ -153,7 +153,15 @@ class _NameSectionTextFieldState extends State<_NameSectionTextField> {
   }
 
   void _onFocusChange() {
+    if (_focusNode.hasFocus) _selectAll();
     _focusNotifier.value = _focusNode.hasFocus;
+  }
+
+  void _selectAll() {
+    _controller.selection = TextSelection(
+      baseOffset: 0,
+      extentOffset: _controller.text.length,
+    );
   }
 
   @override

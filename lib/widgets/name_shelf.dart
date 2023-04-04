@@ -9,13 +9,21 @@ class NameShelf extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        for (final name in names)
-          Expanded(
-            child: NameSection(name: name),
-          ),
-      ],
+    return Theme(
+      data: Theme.of(context).copyWith(
+        textSelectionTheme: const TextSelectionThemeData(
+          selectionColor: Colors.transparent,
+          selectionHandleColor: Colors.transparent,
+        ),
+      ),
+      child: Column(
+        children: [
+          for (final name in names)
+            Expanded(
+              child: NameSection(name: name),
+            ),
+        ],
+      ),
     );
   }
 }
