@@ -37,8 +37,8 @@ void main() {
         expect(alphabet.numericValueOfLetter('W'), 0);
         expect(alphabet.numericValueOfLetter('Z'), 23);
 
-        expect(alphabet.numericValueOfLetter(' '), null);
-        expect(alphabet.numericValueOfLetter('.'), null);
+        expect(alphabet.numericValueOfLetter(' '), isNull);
+        expect(alphabet.numericValueOfLetter('.'), isNull);
       });
 
       test('should return the correct numeric value of a name', () {
@@ -73,8 +73,8 @@ void main() {
         expect(alphabet.numericValueOfLetter('W'), 21);
         expect(alphabet.numericValueOfLetter('Z'), 24);
 
-        expect(alphabet.numericValueOfLetter(' '), null);
-        expect(alphabet.numericValueOfLetter('.'), null);
+        expect(alphabet.numericValueOfLetter(' '), isNull);
+        expect(alphabet.numericValueOfLetter('.'), isNull);
       });
 
       test('should return the correct numeric value of a name', () {
@@ -109,8 +109,8 @@ void main() {
         expect(alphabet.numericValueOfLetter('W'), 20);
         expect(alphabet.numericValueOfLetter('Z'), 23);
 
-        expect(alphabet.numericValueOfLetter(' '), null);
-        expect(alphabet.numericValueOfLetter('.'), null);
+        expect(alphabet.numericValueOfLetter(' '), isNull);
+        expect(alphabet.numericValueOfLetter('.'), isNull);
       });
 
       test('should return the correct numeric value of a name', () {
@@ -145,8 +145,8 @@ void main() {
         expect(alphabet.numericValueOfLetter('W'), 0);
         expect(alphabet.numericValueOfLetter('Z'), 22);
 
-        expect(alphabet.numericValueOfLetter(' '), null);
-        expect(alphabet.numericValueOfLetter('.'), null);
+        expect(alphabet.numericValueOfLetter(' '), isNull);
+        expect(alphabet.numericValueOfLetter('.'), isNull);
       });
 
       test('should return the correct numeric value of a name', () {
