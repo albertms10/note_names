@@ -11,7 +11,7 @@ void main() {
       });
 
       test('should return false if this int is not prime', () {
-        for (final n in const [-11, -1, 0, 1, 110, 500]) {
+        for (final n in const [-11, -1, 0, 1, 49, 110, 511]) {
           expect(n.isPrime, isFalse);
         }
       });
