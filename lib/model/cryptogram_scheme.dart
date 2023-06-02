@@ -13,7 +13,7 @@ class CryptogramScheme {
   /// sounds of the solmization syllables of Guido of Arezzo (where 'ut' is the
   /// root, which we now call 'do', [Note.c]).
   ///
-  /// See [Musical Cryptogram](https://en.wikipedia.org/wiki/Musical_cryptogram#Syllables_to_solmization_names).
+  /// See [Musical cryptogram](https://en.wikipedia.org/wiki/Musical_cryptogram#Syllables_to_solmization_names).
   CryptogramScheme.solmization()
       : name = 'Solmization',
         patterns = {
@@ -40,7 +40,7 @@ class CryptogramScheme {
   /// | O | P | Q | R | S | T | U |
   /// | V | W | X | Y | Z |   |   |
   ///
-  /// See [Musical Cryptogram](https://en.wikipedia.org/wiki/Musical_cryptogram#French).
+  /// See [Musical cryptogram](https://en.wikipedia.org/wiki/Musical_cryptogram#French).
   CryptogramScheme.french()
       : name = 'French',
         patterns = {
@@ -75,7 +75,7 @@ class CryptogramScheme {
   /// Derived on the [CryptogramScheme.french] but leaving H = [Note.b] and
   /// starting the second line with 'I'.
   ///
-  /// See [Musical Cryptogram](https://en.wikipedia.org/wiki/Musical_cryptogram#Summary_of_signature_motifs)
+  /// See [Musical cryptogram](https://en.wikipedia.org/wiki/Musical_cryptogram#Summary_of_signature_motifs)
   /// (Alain).
   CryptogramScheme.frenchVariant()
       : name = 'French variant',
