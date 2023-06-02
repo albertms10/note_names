@@ -74,6 +74,12 @@ void main() {
 
         final robertSchumann = 'SCHA'.toCryptogram(CryptogramScheme.german());
         expect(robertSchumann, [Note.e.flat, Note.c, Note.b, Note.a]);
+
+        final asch1 = 'ASCH'.toCryptogram(CryptogramScheme.german());
+        expect(asch1, [Note.a.flat, Note.c, Note.b]);
+
+        final asch2 = 'A SCH'.toCryptogram(CryptogramScheme.german());
+        expect(asch2, [Note.a, Note.e.flat, Note.c, Note.b]);
       });
     });
   });
