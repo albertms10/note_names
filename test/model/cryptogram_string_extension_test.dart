@@ -4,7 +4,7 @@ import 'package:note_names/model/cryptogram_scheme.dart';
 
 void main() {
   group('CryptogramStringExtension', () {
-    group('.toCryptogram', () {
+    group('.toCryptogram()', () {
       test('should return the musical cryptogram of this String', () {
         final arnoldSchonberg =
             'A. SCHBEG'.toCryptogram(CryptogramScheme.german());
