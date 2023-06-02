@@ -6,9 +6,6 @@ class CryptogramScheme {
   final String name;
   final Map<Pattern, Note> patterns;
 
-  /// Creates a new [CryptogramScheme] from [name] and [patterns].
-  const CryptogramScheme(this.name, {required this.patterns});
-
   /// Under this scheme the vowel sounds in the text are matched to the vowel
   /// sounds of the solmization syllables of Guido of Arezzo (where 'ut' is the
   /// root, which we now call 'do', [Note.c]).
