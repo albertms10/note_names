@@ -24,11 +24,10 @@ class CryptogramScheme {
           RegExp('sol?', caseSensitive: false): Note.g,
           RegExp('la', caseSensitive: false): Note.a,
           RegExp('(t|s)i', caseSensitive: false): Note.b,
-          RegExp('a', caseSensitive: false): Note.a,
-          RegExp('d', caseSensitive: false): Note.c,
-          RegExp('r', caseSensitive: false): Note.d,
-          RegExp('m', caseSensitive: false): Note.e,
-          RegExp('f', caseSensitive: false): Note.f,
+          RegExp('a', caseSensitive: false): Note.f,
+          RegExp('e', caseSensitive: false): Note.d,
+          RegExp('i', caseSensitive: false): Note.e,
+          RegExp('u', caseSensitive: false): Note.c,
         };
 
   /// Arisen late in the 19th century, it was more akin to normal encipherment.

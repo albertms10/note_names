@@ -6,6 +6,13 @@ void main() {
   group('CryptogramStringExtension', () {
     group('.toCryptogram()', () {
       test('should return the musical cryptogram of this String', () {
+        final herculesDuxFerrarie = 'Hercules Dux Ferrarie'
+            .toCryptogram(CryptogramScheme.solmization());
+        expect(
+          herculesDuxFerrarie,
+          [Note.d, Note.c, Note.d, Note.c, Note.d, Note.f, Note.e, Note.d],
+        );
+
         final arnoldSchonberg =
             'A. SCHBEG'.toCryptogram(CryptogramScheme.german());
         expect(
