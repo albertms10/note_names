@@ -33,8 +33,7 @@ void main() {
     group('.musicalCryptogram', () {
       test('should return the musical cryptogram of this Name', () {
         expect(
-          const Name('Bach', scheme: CryptogramScheme.german())
-              .musicalCryptogram,
+          const Name('Bach').musicalCryptogram,
           [Note.b.flat, Note.a, Note.c, Note.b],
         );
       });
