@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_names/model/name.dart';
+import 'package:note_names/widgets/musical_cryptogram/cryptogram_section.dart';
 import 'package:note_names/widgets/name_section.dart';
 
 class NameShelf extends StatelessWidget {
@@ -20,7 +21,9 @@ class NameShelf extends StatelessWidget {
         children: [
           for (final name in names)
             Expanded(
-              child: NameSection(name: name),
+              child: 1 == 2
+                  ? NameSection(name: name)
+                  : CryptogramSection(name: name),
             ),
         ],
       ),

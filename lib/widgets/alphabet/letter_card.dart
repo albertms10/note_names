@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:note_names/utils/int_extension.dart';
 
-class AlphabetLetter extends StatelessWidget {
+class LetterCard extends StatelessWidget {
   final String letter;
   final int? value;
   final bool isDimmed;
 
-  const AlphabetLetter({
+  const LetterCard({
     super.key,
     required this.letter,
     this.value,

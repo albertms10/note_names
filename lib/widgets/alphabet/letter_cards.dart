@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:note_names/model/name.dart';
-import 'package:note_names/widgets/alphabet_letter.dart';
+import 'package:note_names/widgets/alphabet/letter_card.dart';
 
-class NameLabels extends StatelessWidget {
+class LetterCards extends StatelessWidget {
   final Name name;
 
-  const NameLabels({super.key, required this.name});
+  const LetterCards({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class NameLabels extends StatelessWidget {
             if (character == ' ')
               const SizedBox(width: 24)
             else
-              AlphabetLetter(
+              LetterCard(
                 letter: character,
                 value: name.alphabet.numericValueOfLetter(character),
                 isDimmed: !name.alphabet.containsLetter(character),
