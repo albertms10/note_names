@@ -4,27 +4,27 @@ import 'package:music_notes/music_notes.dart';
 
 class CryptogramScheme {
   final String name;
-  final Map<Pattern, Note> patterns;
+  final Map<String, Note> patterns;
 
   /// Under this scheme the vowel sounds in the text are matched to the vowel
   /// sounds of the solmization syllables of Guido of Arezzo (where 'ut' is the
   /// root, which we now call 'do', [Note.c]).
   ///
   /// See [Musical cryptogram](https://en.wikipedia.org/wiki/Musical_cryptogram#Syllables_to_solmization_names).
-  CryptogramScheme.solmization()
+  const CryptogramScheme.solmization()
       : name = 'Solmization',
-        patterns = {
-          RegExp('do|ut', caseSensitive: false): Note.c,
-          RegExp('re', caseSensitive: false): Note.d,
-          RegExp('mi', caseSensitive: false): Note.e,
-          RegExp('fa', caseSensitive: false): Note.f,
-          RegExp('sol?', caseSensitive: false): Note.g,
-          RegExp('la', caseSensitive: false): Note.a,
-          RegExp('(t|s)i', caseSensitive: false): Note.b,
-          RegExp('a', caseSensitive: false): Note.f,
-          RegExp('e', caseSensitive: false): Note.d,
-          RegExp('i', caseSensitive: false): Note.e,
-          RegExp('u', caseSensitive: false): Note.c,
+        patterns = const {
+          'do|ut': Note.c,
+          're': Note.d,
+          'mi': Note.e,
+          'fa': Note.f,
+          'sol?': Note.g,
+          'la': Note.a,
+          '(t|s)i': Note.b,
+          'a': Note.f,
+          'e': Note.d,
+          'i': Note.e,
+          'u': Note.c,
         };
 
   /// Arisen late in the 19th century, it was more akin to normal encipherment.
@@ -38,35 +38,35 @@ class CryptogramScheme {
   /// | V | W | X | Y | Z |   |   |
   ///
   /// See [Musical cryptogram](https://en.wikipedia.org/wiki/Musical_cryptogram#French).
-  CryptogramScheme.french()
+  const CryptogramScheme.french()
       : name = 'French',
-        patterns = {
-          RegExp('A', caseSensitive: false): Note.a,
-          RegExp('B', caseSensitive: false): Note.b,
-          RegExp('C', caseSensitive: false): Note.c,
-          RegExp('D', caseSensitive: false): Note.d,
-          RegExp('E', caseSensitive: false): Note.e,
-          RegExp('F', caseSensitive: false): Note.f,
-          RegExp('G', caseSensitive: false): Note.g,
-          RegExp('H', caseSensitive: false): Note.a,
-          RegExp('I', caseSensitive: false): Note.b,
-          RegExp('J', caseSensitive: false): Note.c,
-          RegExp('K', caseSensitive: false): Note.d,
-          RegExp('L', caseSensitive: false): Note.e,
-          RegExp('M', caseSensitive: false): Note.f,
-          RegExp('N', caseSensitive: false): Note.g,
-          RegExp('O', caseSensitive: false): Note.a,
-          RegExp('P', caseSensitive: false): Note.b,
-          RegExp('Q', caseSensitive: false): Note.c,
-          RegExp('R', caseSensitive: false): Note.d,
-          RegExp('S', caseSensitive: false): Note.e,
-          RegExp('T', caseSensitive: false): Note.f,
-          RegExp('U', caseSensitive: false): Note.g,
-          RegExp('V', caseSensitive: false): Note.a,
-          RegExp('W', caseSensitive: false): Note.b,
-          RegExp('X', caseSensitive: false): Note.c,
-          RegExp('Y', caseSensitive: false): Note.d,
-          RegExp('Z', caseSensitive: false): Note.e,
+        patterns = const {
+          'A': Note.a,
+          'B': Note.b,
+          'C': Note.c,
+          'D': Note.d,
+          'E': Note.e,
+          'F': Note.f,
+          'G': Note.g,
+          'H': Note.a,
+          'I': Note.b,
+          'J': Note.c,
+          'K': Note.d,
+          'L': Note.e,
+          'M': Note.f,
+          'N': Note.g,
+          'O': Note.a,
+          'P': Note.b,
+          'Q': Note.c,
+          'R': Note.d,
+          'S': Note.e,
+          'T': Note.f,
+          'U': Note.g,
+          'V': Note.a,
+          'W': Note.b,
+          'X': Note.c,
+          'Y': Note.d,
+          'Z': Note.e,
         };
 
   /// Derived on the [CryptogramScheme.french] but leaving H = [Note.b] and
@@ -74,35 +74,35 @@ class CryptogramScheme {
   ///
   /// See [Musical cryptogram](https://en.wikipedia.org/wiki/Musical_cryptogram#Summary_of_signature_motifs)
   /// (Alain).
-  CryptogramScheme.frenchVariant()
+  const CryptogramScheme.frenchVariant()
       : name = 'French variant',
-        patterns = {
-          RegExp('A', caseSensitive: false): Note.a,
-          RegExp('B', caseSensitive: false): Note.b,
-          RegExp('C', caseSensitive: false): Note.c,
-          RegExp('D', caseSensitive: false): Note.d,
-          RegExp('E', caseSensitive: false): Note.e,
-          RegExp('F', caseSensitive: false): Note.f,
-          RegExp('G', caseSensitive: false): Note.g,
-          RegExp('H', caseSensitive: false): Note.b,
-          RegExp('I', caseSensitive: false): Note.a,
-          RegExp('J', caseSensitive: false): Note.b,
-          RegExp('K', caseSensitive: false): Note.c,
-          RegExp('L', caseSensitive: false): Note.d,
-          RegExp('M', caseSensitive: false): Note.e,
-          RegExp('N', caseSensitive: false): Note.f,
-          RegExp('O', caseSensitive: false): Note.g,
-          RegExp('P', caseSensitive: false): Note.a,
-          RegExp('Q', caseSensitive: false): Note.b,
-          RegExp('R', caseSensitive: false): Note.c,
-          RegExp('S', caseSensitive: false): Note.d,
-          RegExp('T', caseSensitive: false): Note.e,
-          RegExp('U', caseSensitive: false): Note.f,
-          RegExp('V', caseSensitive: false): Note.g,
-          RegExp('W', caseSensitive: false): Note.a,
-          RegExp('X', caseSensitive: false): Note.b,
-          RegExp('Y', caseSensitive: false): Note.c,
-          RegExp('Z', caseSensitive: false): Note.d,
+        patterns = const {
+          'A': Note.a,
+          'B': Note.b,
+          'C': Note.c,
+          'D': Note.d,
+          'E': Note.e,
+          'F': Note.f,
+          'G': Note.g,
+          'H': Note.b,
+          'I': Note.a,
+          'J': Note.b,
+          'K': Note.c,
+          'L': Note.d,
+          'M': Note.e,
+          'N': Note.f,
+          'O': Note.g,
+          'P': Note.a,
+          'Q': Note.b,
+          'R': Note.c,
+          'S': Note.d,
+          'T': Note.e,
+          'U': Note.f,
+          'V': Note.g,
+          'W': Note.a,
+          'X': Note.b,
+          'Y': Note.c,
+          'Z': Note.d,
         };
 
   /// Because the development of note names took place within the framework of
@@ -113,48 +113,55 @@ class CryptogramScheme {
   /// 'Es' in German, could represent 'S' and [Note.a.flat] the digraph 'As'.
   ///
   /// See [Musical cryptogram](https://en.wikipedia.org/wiki/Musical_cryptogram#German).
-  CryptogramScheme.german()
+  const CryptogramScheme.german()
       : name = 'German',
-        patterns = {
-          RegExp('As', caseSensitive: false): Note.a.flat,
-          RegExp('Ais', caseSensitive: false): Note.a.sharp,
-          RegExp('A', caseSensitive: false): Note.a,
-          RegExp('B', caseSensitive: false): Note.b.flat,
-          RegExp('Ces', caseSensitive: false): Note.c.flat,
-          RegExp('Cis', caseSensitive: false): Note.c.sharp,
-          RegExp('C', caseSensitive: false): Note.c,
-          RegExp('Des', caseSensitive: false): Note.d.flat,
-          RegExp('Dis', caseSensitive: false): Note.d.sharp,
-          RegExp('D', caseSensitive: false): Note.d,
-          RegExp('Es', caseSensitive: false): Note.e.flat,
-          RegExp('Eis', caseSensitive: false): Note.e.sharp,
-          RegExp('Fes', caseSensitive: false): Note.f.flat,
-          RegExp('Fis', caseSensitive: false): Note.f.sharp,
-          RegExp('F', caseSensitive: false): Note.f,
-          RegExp('Ges', caseSensitive: false): Note.g.flat,
-          RegExp('Gis', caseSensitive: false): Note.g.sharp,
-          RegExp('G', caseSensitive: false): Note.g,
-          RegExp('E', caseSensitive: false): Note.e,
-          RegExp('H', caseSensitive: false): Note.b,
-          RegExp('I', caseSensitive: false): Note.b,
-          RegExp('J', caseSensitive: false): Note.c,
-          RegExp('K', caseSensitive: false): Note.d,
-          RegExp('L', caseSensitive: false): Note.e,
-          RegExp('M', caseSensitive: false): Note.f,
-          RegExp('N', caseSensitive: false): Note.g,
-          RegExp('O', caseSensitive: false): Note.a,
-          RegExp('P', caseSensitive: false): Note.b,
-          RegExp('Q', caseSensitive: false): Note.c,
-          RegExp('R', caseSensitive: false): Note.d,
-          RegExp('S', caseSensitive: false): Note.e.flat,
-          RegExp('T', caseSensitive: false): Note.f,
-          RegExp('U', caseSensitive: false): Note.g,
-          RegExp('V', caseSensitive: false): Note.a,
-          RegExp('W', caseSensitive: false): Note.b,
-          RegExp('X', caseSensitive: false): Note.c,
-          RegExp('Y', caseSensitive: false): Note.d,
-          RegExp('Z', caseSensitive: false): Note.e,
+        patterns = const {
+          'As': Note(BaseNote.a, Accidental.flat),
+          'Ais': Note(BaseNote.a, Accidental.sharp),
+          'A': Note.a,
+          'B': Note(BaseNote.b, Accidental.flat),
+          'Ces': Note(BaseNote.c, Accidental.flat),
+          'Cis': Note(BaseNote.c, Accidental.sharp),
+          'C': Note.c,
+          'Des': Note(BaseNote.d, Accidental.flat),
+          'Dis': Note(BaseNote.d, Accidental.sharp),
+          'D': Note.d,
+          'Es': Note(BaseNote.e, Accidental.flat),
+          'Eis': Note(BaseNote.e, Accidental.sharp),
+          'Fes': Note(BaseNote.f, Accidental.flat),
+          'Fis': Note(BaseNote.f, Accidental.sharp),
+          'F': Note.f,
+          'Ges': Note(BaseNote.g, Accidental.flat),
+          'Gis': Note(BaseNote.g, Accidental.sharp),
+          'G': Note.g,
+          'E': Note.e,
+          'H': Note.b,
+          'I': Note.b,
+          'J': Note.c,
+          'K': Note.d,
+          'L': Note.e,
+          'M': Note.f,
+          'N': Note.g,
+          'O': Note.a,
+          'P': Note.b,
+          'Q': Note.c,
+          'R': Note.d,
+          'S': Note(BaseNote.e, Accidental.flat),
+          'T': Note.f,
+          'U': Note.g,
+          'V': Note.a,
+          'W': Note.b,
+          'X': Note.c,
+          'Y': Note.d,
+          'Z': Note.e,
         };
+
+  static const List<CryptogramScheme> schemes = [
+    CryptogramScheme.solmization(),
+    CryptogramScheme.french(),
+    CryptogramScheme.frenchVariant(),
+    CryptogramScheme.german(),
+  ];
 }
 
 extension CryptogramStringExtension on String {
@@ -170,12 +177,15 @@ extension CryptogramStringExtension on String {
   /// 'Alain'.toCryptogram(CryptogramScheme.frenchVariant())
   ///   == [Note.a, Note.d, Note.a, Note.a, Note.f]
   /// ```
-  List<Note> toCryptogram(CryptogramScheme scheme) {
+  List<Note> toCryptogram([
+    CryptogramScheme scheme = const CryptogramScheme.solmization(),
+  ]) {
     final seenMatches = <Match>[];
     final notes = SplayTreeMap<int, Note>();
 
     for (final pattern in scheme.patterns.keys) {
-      for (final match in pattern.allMatches(this)) {
+      final matches = RegExp(pattern, caseSensitive: false).allMatches(this);
+      for (final match in matches) {
         final isMatchSeen = seenMatches.any(
           (element) => match.start >= element.start && match.end <= element.end,
         );
