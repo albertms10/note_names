@@ -40,12 +40,12 @@ void main() {
           [Note.c, Note.f, Note.e, Note.b.flat, Note.a, Note.c, Note.b],
         );
 
-        final dimitriSchostakowitsch =
+        final dmitriSchostakowitsch =
             const CryptogramScheme.german().cryptogramOf('D. SCH');
-        expect(dimitriSchostakowitsch, [Note.d, Note.e.flat, Note.c, Note.b]);
+        expect(dmitriSchostakowitsch, [Note.d, Note.e.flat, Note.c, Note.b]);
 
-        final edvardGried = const CryptogramScheme.french().cryptogramOf('EBG');
-        expect(edvardGried, [Note.e, Note.b, Note.g]);
+        final edvardGrieg = const CryptogramScheme.french().cryptogramOf('EBG');
+        expect(edvardGrieg, [Note.e, Note.b, Note.g]);
 
         final franzSchubert =
             const CryptogramScheme.german().cryptogramOf('F. SCH');
