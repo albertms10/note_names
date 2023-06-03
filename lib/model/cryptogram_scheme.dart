@@ -162,40 +162,45 @@ class CryptogramScheme {
     CryptogramScheme.frenchVariant(),
     CryptogramScheme.german(),
   ];
-}
 
-extension CryptogramStringExtension on String {
   /// Returns the cryptogrammatic sequence of [Note]s, a sequence which can be
   /// taken to refer to an extra-musical text by some 'logical' relationship,
   /// usually between note names and letters.
   ///
   /// Example:
   /// ```dart
-  /// 'Bach'.toCryptogram(CryptogramScheme.german())
+  /// const CryptogramScheme.german().cryptogramOf('Bach')
   ///   == [Note.b.flat, Note.a, Note.c, Note.b]
   ///
-  /// 'Alain'.toCryptogram(CryptogramScheme.frenchVariant())
+  /// const CryptogramScheme.frenchVariant().cryptogramOf('Alain')
   ///   == [Note.a, Note.d, Note.a, Note.a, Note.f]
   /// ```
-  List<Note> toCryptogram([
-    CryptogramScheme scheme = const CryptogramScheme.solmization(),
-  ]) {
+  List<Note> cryptogramOf(String name) {
     final seenMatches = <Match>[];
     final notes = SplayTreeMap<int, Note>();
 
-    for (final pattern in scheme.patterns.keys) {
-      final matches = RegExp(pattern, caseSensitive: false).allMatches(this);
+    for (final pattern in patterns.keys) {
+      final matches = RegExp(pattern, caseSensitive: false).allMatches(name);
       for (final match in matches) {
         final isMatchSeen = seenMatches.any(
           (element) => match.start >= element.start && match.end <= element.end,
         );
         if (!isMatchSeen) {
           seenMatches.add(match);
-          notes[match.start] = scheme.patterns[pattern]!;
+          notes[match.start] = patterns[pattern]!;
         }
       }
     }
 
     return notes.values.toList();
   }
+
+  @override
+  bool operator ==(Object other) =>
+      other is CryptogramScheme &&
+      name == other.name &&
+      patterns == other.patterns;
+
+  @override
+  int get hashCode => Object.hash(name, patterns);
 }
