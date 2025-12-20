@@ -9,29 +9,24 @@ class NoteCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final onPrimary = theme.colorScheme.primary.withOpacity(0.8);
+    final onPrimary = theme.colorScheme.primary.withValues(alpha: 0.8);
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 4),
+      margin: const .symmetric(horizontal: 4),
       child: Material(
         elevation: 1.5,
         color: Colors.white,
-        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        borderRadius: const .all(.circular(12)),
         child: Container(
-          padding: const EdgeInsets.symmetric(
-            vertical: 12,
-            horizontal: 18,
-          ),
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-          ),
+          padding: const .symmetric(vertical: 12, horizontal: 18),
+          decoration: const BoxDecoration(borderRadius: .all(.circular(12))),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: .min,
             children: [
               Text(
                 '$note',
                 style: theme.textTheme.displayLarge?.copyWith(
-                  fontWeight: FontWeight.w300,
+                  fontWeight: .w300,
                   color: onPrimary,
                 ),
               ),

@@ -17,11 +17,10 @@ class NameSectionTextField extends StatefulWidget {
 }
 
 class _NameSectionTextFieldState extends State<NameSectionTextField> {
-  late final TextEditingController _controller =
-      TextEditingController(text: widget.name);
+  late final TextEditingController _controller = .new(text: widget.name);
 
-  late final FocusNode _focusNode = FocusNode()..addListener(_onFocusChange);
-  final ValueNotifier<bool> _focusNotifier = ValueNotifier(false);
+  late final FocusNode _focusNode = .new()..addListener(_onFocusChange);
+  final ValueNotifier<bool> _focusNotifier = .new(false);
 
   @override
   void dispose() {
@@ -59,13 +58,15 @@ class _NameSectionTextFieldState extends State<NameSectionTextField> {
             hintText: 'Type a name',
             contentPadding: widget.contentPadding,
             filled: true,
-            fillColor: isFocused ? color.withOpacity(0.15) : Colors.transparent,
-            hoverColor: color.withOpacity(0.05),
-            border: InputBorder.none,
+            fillColor: isFocused
+                ? color.withValues(alpha: 0.15)
+                : Colors.transparent,
+            hoverColor: color.withValues(alpha: 0.05),
+            border: .none,
           ),
           style: const TextStyle(color: Colors.transparent),
-          textAlign: TextAlign.center,
-          textAlignVertical: TextAlignVertical.center,
+          textAlign: .center,
+          textAlignVertical: .center,
           showCursor: false,
           autocorrect: false,
           maxLines: null,

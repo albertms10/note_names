@@ -50,12 +50,17 @@ void main() {
       test(
         'should return a new copy of this Name with overridden properties',
         () {
-          const alphabet =
-              Alphabet(name: 'Alphabet 1', letterToNumber: {'Z': 24});
+          const alphabet = Alphabet(
+            name: 'Alphabet 1',
+            letterToNumber: {'Z': 24},
+          );
           const scheme = CryptogramScheme.french();
           const name = Name('ABC');
-          final copiedName =
-              name.copyWith(name: 'Z', alphabet: alphabet, scheme: scheme);
+          final copiedName = name.copyWith(
+            name: 'Z',
+            alphabet: alphabet,
+            scheme: scheme,
+          );
           expect(copiedName.name, 'Z');
           expect(copiedName.alphabet, alphabet);
           expect(copiedName.scheme, scheme);
@@ -66,11 +71,11 @@ void main() {
     group('.hashCode', () {
       test('should remove duplicates in a Set', () {
         final collection = {
-          // ignore: prefer_const_constructors
+          // ignore: prefer_const_constructors for testing
           Name('ABC'),
-          // ignore: prefer_const_constructors
+          // ignore: prefer_const_constructors for testing
           Name('XYZ'),
-          // ignore: prefer_const_constructors
+          // ignore: prefer_const_constructors for testing
           Name('ABC'),
         };
         expect(collection.length, 2);

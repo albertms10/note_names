@@ -16,43 +16,39 @@ class LetterCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final onPrimary = theme.colorScheme.primary.withOpacity(0.8);
-    final primaryBackground =
-        theme.colorScheme.primary.withOpacity(isDimmed ? 0.2 : 0.35);
+    final onPrimary = theme.colorScheme.primary.withValues(alpha: 0.8);
+    final primaryBackground = theme.colorScheme.primary.withValues(
+      alpha: isDimmed ? 0.2 : 0.35,
+    );
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 4),
+      margin: const .symmetric(horizontal: 4),
       child: Material(
         elevation: 1.5,
         color: Colors.white,
-        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        borderRadius: const .all(.circular(12)),
         child: Container(
-          padding: const EdgeInsets.symmetric(
-            vertical: 12,
-            horizontal: 18,
-          ),
+          padding: const .symmetric(vertical: 12, horizontal: 18),
           decoration: BoxDecoration(
             color: primaryBackground,
-            borderRadius: const BorderRadius.all(Radius.circular(12)),
+            borderRadius: const .all(.circular(12)),
           ),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: .min,
             children: [
               Text(
                 letter.toUpperCase(),
-                style: (isDimmed
-                        ? theme.textTheme.displaySmall
-                        : theme.textTheme.displayLarge)
-                    ?.copyWith(
-                  fontWeight: FontWeight.w300,
-                  color: onPrimary,
-                ),
+                style:
+                    (isDimmed
+                            ? theme.textTheme.displaySmall
+                            : theme.textTheme.displayLarge)
+                        ?.copyWith(fontWeight: .w300, color: onPrimary),
               ),
               Text(
                 value != null ? '$value' : '',
                 style: TextStyle(
                   color: onPrimary,
-                  fontWeight: value?.isPrime ?? false ? FontWeight.w800 : null,
+                  fontWeight: value?.isPrime ?? false ? .w800 : null,
                 ),
               ),
             ],

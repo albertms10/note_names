@@ -17,8 +17,8 @@ class NameSectionValue extends StatelessWidget {
         '$value',
         style: theme.textTheme.displayLarge?.copyWith(
           fontSize: 200,
-          fontWeight: FontWeight.w100,
-          color: color.withOpacity(0.2),
+          fontWeight: .w100,
+          color: color.withValues(alpha: 0.2),
           letterSpacing: -8,
         ),
       ),

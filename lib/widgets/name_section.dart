@@ -31,7 +31,7 @@ class _NameSectionState extends State<NameSection> {
 
     return Theme(
       data: Theme.of(context).copyWith(
-        colorScheme: ColorScheme.fromSeed(
+        colorScheme: .fromSeed(
           seedColor: NameSection.colorFromValue(name.numericValue),
         ),
       ),
@@ -42,9 +42,12 @@ class _NameSectionState extends State<NameSection> {
 
           return Container(
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               border: Border(
-                bottom: BorderSide(color: color.withOpacity(0.4), width: 2),
+                bottom: BorderSide(
+                  color: color.withValues(alpha: 0.4),
+                  width: 2,
+                ),
               ),
             ),
             clipBehavior: Clip.antiAlias,
