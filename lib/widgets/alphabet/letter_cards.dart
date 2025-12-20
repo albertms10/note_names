@@ -11,9 +11,9 @@ class LetterCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Wrap(
-        alignment: WrapAlignment.center,
+        alignment: .center,
         runSpacing: 8,
-        crossAxisAlignment: WrapCrossAlignment.end,
+        crossAxisAlignment: .end,
         children: [
           for (final character in name.name.characters)
             if (character == ' ')

@@ -15,10 +15,10 @@ class CryptogramSchemeDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.only(top: 16),
+      padding: const .only(top: 16),
       child: Align(
         alignment: AlignmentDirectional.topStart,
-        child: DropdownButtonFormField(
+        child: DropdownButtonFormField<CryptogramScheme>(
           items: [
             for (final scheme in CryptogramScheme.schemes)
               DropdownMenuItem(
@@ -30,9 +30,9 @@ class CryptogramSchemeDropdown extends StatelessWidget {
                 ),
               ),
           ],
-          value: const CryptogramScheme.german(),
+          initialValue: const .german(),
           onChanged: onSchemeChanged,
-          decoration: const InputDecoration.collapsed(hintText: 'Scheme'),
+          decoration: const .collapsed(hintText: 'Scheme'),
         ),
       ),
     );
@@ -56,22 +56,19 @@ class _CryptogramSchemeDropdownMenuItem extends StatelessWidget {
     return DropdownMenuItem(
       value: scheme,
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: .min,
         children: [
           Text(
             scheme.name,
-            style: TextStyle(
-              color: theme.colorScheme.primary,
-              fontSize: 14,
-            ),
+            style: TextStyle(color: theme.colorScheme.primary, fontSize: 14),
           ),
           const SizedBox(width: 14),
           Text(
             scheme.cryptogramOf(name.name).join('–'),
             style: TextStyle(
-              color: theme.colorScheme.primary.withOpacity(0.6),
+              color: theme.colorScheme.primary.withValues(alpha: 0.6),
               fontSize: 14,
-              fontWeight: FontWeight.w400,
+              fontWeight: .w400,
             ),
           ),
         ],

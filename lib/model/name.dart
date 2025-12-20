@@ -9,8 +9,8 @@ class Name {
 
   const Name(
     this.name, {
-    this.alphabet = const Alphabet.latinNaturalOrder1(),
-    this.scheme = const CryptogramScheme.german(),
+    this.alphabet = const .latinNaturalOrder1(),
+    this.scheme = const .german(),
   });
 
   int get numericValue => alphabet.numericValueOfName(name);

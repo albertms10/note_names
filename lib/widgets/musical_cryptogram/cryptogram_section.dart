@@ -30,9 +30,9 @@ class _CryptogramSectionState extends State<CryptogramSection> {
 
     return Container(
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         border: Border(
-          bottom: BorderSide(color: color.withOpacity(0.4), width: 2),
+          bottom: BorderSide(color: color.withValues(alpha: 0.4), width: 2),
         ),
       ),
       clipBehavior: Clip.antiAlias,

@@ -16,7 +16,7 @@ class AlphabetDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.only(top: 16),
+      padding: const .only(top: 16),
       child: Align(
         alignment: AlignmentDirectional.topStart,
         child: DropdownButtonFormField(
@@ -31,9 +31,9 @@ class AlphabetDropdown extends StatelessWidget {
                 ),
               ),
           ],
-          value: name.alphabet,
+          initialValue: name.alphabet,
           onChanged: onAlphabetChanged,
-          decoration: const InputDecoration.collapsed(hintText: 'Alphabet'),
+          decoration: const .collapsed(hintText: 'Alphabet'),
         ),
       ),
     );
@@ -58,7 +58,7 @@ class _AlphabetDropdownMenuItem extends StatelessWidget {
       value: alphabet,
       child: Theme(
         data: theme.copyWith(
-          colorScheme: ColorScheme.fromSeed(
+          colorScheme: .fromSeed(
             seedColor: NameSection.colorFromValue(
               alphabet.numericValueOfName(name),
             ),
@@ -69,7 +69,7 @@ class _AlphabetDropdownMenuItem extends StatelessWidget {
             final theme = Theme.of(context);
 
             return Row(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: .min,
               children: [
                 Text(
                   alphabet.name,
@@ -82,9 +82,9 @@ class _AlphabetDropdownMenuItem extends StatelessWidget {
                 Text(
                   '${alphabet.numericValueOfName(name)}',
                   style: TextStyle(
-                    color: theme.colorScheme.primary.withOpacity(0.6),
+                    color: theme.colorScheme.primary.withValues(alpha: 0.6),
                     fontSize: 14,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: .w400,
                   ),
                 ),
               ],

@@ -167,13 +167,13 @@ void main() {
 
     group('.hashCode', () {
       test('should remove duplicates in a Set', () {
-        final collection = {
-          // ignore: prefer_const_constructors
-          Alphabet.latinNaturalOrder(),
-          // ignore: prefer_const_constructors
-          Alphabet.latinNaturalOrder1(),
-          // ignore: prefer_const_constructors
-          Alphabet.latinNaturalOrder(),
+        final collection = <Alphabet>{
+          // ignore: prefer_const_constructors for testing
+          .latinNaturalOrder(),
+          // ignore: prefer_const_constructors for testing
+          .latinNaturalOrder1(),
+          // ignore: prefer_const_constructors for testing
+          .latinNaturalOrder(),
         };
         expect(collection.length, 2);
       });
