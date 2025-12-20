@@ -15,7 +15,6 @@ dependencies:
   music_notes: ^0.24.0
 
 dev_dependencies:
-  dart_code_metrics: ^5.7.6
   flutter_test:
     sdk: flutter
   very_good_analysis: ^10.0.0
