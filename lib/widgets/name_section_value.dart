@@ -11,7 +11,7 @@ class NameSectionValue extends StatelessWidget {
     final color = theme.colorScheme.primary;
 
     return FittedBox(
-      fit: BoxFit.scaleDown,
+      fit: .scaleDown,
       alignment: AlignmentDirectional.centerEnd,
       child: Text(
         '$value',

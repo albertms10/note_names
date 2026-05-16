@@ -171,11 +171,15 @@ void main() {
           // ignore: prefer_const_constructors for testing
           .latinNaturalOrder(),
           // ignore: prefer_const_constructors for testing
+          Alphabet(name: 'A', letterToNumber: {'a': 1, 'b': 2}),
+          // ignore: prefer_const_constructors for testing
           .latinNaturalOrder1(),
+          // ignore: prefer_const_constructors for testing
+          Alphabet(name: 'A', letterToNumber: {'a': 1, 'b': 2}),
           // ignore: prefer_const_constructors for testing
           .latinNaturalOrder(),
         };
-        expect(collection.length, 2);
+        expect(collection.length, 3);
       });
     });
   });

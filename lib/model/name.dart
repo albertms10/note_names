@@ -29,5 +29,5 @@ class Name {
       other is Name && name == other.name && alphabet == other.alphabet;
 
   @override
-  int get hashCode => Object.hash(name, alphabet.hashCode);
+  int get hashCode => Object.hash(name, alphabet);
 }

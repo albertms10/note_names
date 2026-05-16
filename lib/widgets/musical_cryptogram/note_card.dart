@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:music_notes/music_notes.dart';
 
 class NoteCard extends StatelessWidget {
-  final Note note;
+  final String label;
 
-  const NoteCard({super.key, required this.note});
+  const NoteCard({super.key, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class NoteCard extends StatelessWidget {
             mainAxisSize: .min,
             children: [
               Text(
-                '$note',
+                label,
                 style: theme.textTheme.displayLarge?.copyWith(
                   fontWeight: .w300,
                   color: onPrimary,

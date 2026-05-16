@@ -36,6 +36,7 @@ void main() {
         final dmitriSchostakowitsch = const CryptogramScheme.german()
             .cryptogramOf('D. SCH');
         expect(dmitriSchostakowitsch, <Note>[.d, .e.flat, .c, .b]);
+
         final edvardGrieg = const CryptogramScheme.french().cryptogramOf('EBG');
         expect(edvardGrieg, <Note>[.e, .b, .g]);
 
@@ -62,6 +63,7 @@ void main() {
         final johannSebastianBach = const CryptogramScheme.german()
             .cryptogramOf('BACH');
         expect(johannSebastianBach, <Note>[.b.flat, .a, .c, .b]);
+
         final johnCage = const CryptogramScheme.german().cryptogramOf('CAGE');
         expect(johnCage, <Note>[.c, .a, .g, .e]);
 
@@ -100,11 +102,15 @@ void main() {
           // ignore: prefer_const_constructors for testing
           .french(),
           // ignore: prefer_const_constructors for testing
+          CryptogramScheme(name: 'A', patterns: {'a': .c}),
+          // ignore: prefer_const_constructors for testing
           .frenchVariant(),
           // ignore: prefer_const_constructors for testing
           .french(),
+          // ignore: prefer_const_constructors for testing
+          CryptogramScheme(name: 'A', patterns: {'a': .c}),
         };
-        expect(collection.length, 2);
+        expect(collection.length, 3);
       });
     });
   });
