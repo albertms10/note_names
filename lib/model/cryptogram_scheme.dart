@@ -8,6 +8,12 @@ class CryptogramScheme {
   final Map<String, Note> patterns;
   final NoteNotation notationSystem;
 
+  const CryptogramScheme({
+    required this.name,
+    required this.patterns,
+    this.notationSystem = const EnglishNoteNotation.symbol(),
+  });
+
   /// Under this scheme the vowel sounds in the text are matched to the vowel
   /// sounds of the solmization syllables of Guido of Arezzo (where 'ut' is the
   /// root, which we now call 'do', [Note.c]).
@@ -212,7 +218,7 @@ class CryptogramScheme {
       const MapEquality<String, Note>().equals(patterns, other.patterns);
 
   @override
-  int get hashCode => Object.hash(name, patterns);
+  int get hashCode => Object.hash(name, Object.hashAll(patterns.values));
 }
 
 /// The French notation system for [NoteName].

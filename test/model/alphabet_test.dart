@@ -179,7 +179,7 @@ void main() {
           // ignore: prefer_const_constructors for testing
           .latinNaturalOrder(),
         };
-        expect(collection.length, 2);
+        expect(collection.length, 3);
       });
     });
   });

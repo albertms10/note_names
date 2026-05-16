@@ -161,5 +161,5 @@ class Alphabet {
       );
 
   @override
-  int get hashCode => Object.hash(name, _letterToNumber);
+  int get hashCode => Object.hash(name, Object.hashAll(_letterToNumber.values));
 }
