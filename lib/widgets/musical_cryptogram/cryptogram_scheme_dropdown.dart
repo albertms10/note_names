@@ -64,7 +64,10 @@ class _CryptogramSchemeDropdownMenuItem extends StatelessWidget {
           ),
           const SizedBox(width: 14),
           Text(
-            scheme.cryptogramOf(name.name).join('–'),
+            scheme
+                .cryptogramOf(name.name)
+                .map((note) => note.format(scheme.notationSystem))
+                .join('–'),
             style: TextStyle(
               color: theme.colorScheme.primary.withValues(alpha: 0.6),
               fontSize: 14,

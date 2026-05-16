@@ -1,10 +1,12 @@
 import 'dart:collection' show SplayTreeMap;
 
+import 'package:collection/collection.dart' show MapEquality;
 import 'package:music_notes/music_notes.dart';
 
 class CryptogramScheme {
   final String name;
   final Map<String, Note> patterns;
+  final NoteNotation notationSystem;
 
   /// Under this scheme the vowel sounds in the text are matched to the vowel
   /// sounds of the solmization syllables of Guido of Arezzo (where 'ut' is the
@@ -13,6 +15,7 @@ class CryptogramScheme {
   /// See [Musical cryptogram](https://en.wikipedia.org/wiki/Musical_cryptogram#Syllables_to_solmization_names).
   const CryptogramScheme.solmization()
     : name = 'Solmization',
+      notationSystem = const RomanceNoteNotation.symbol(),
       patterns = const {
         'do|ut': .c,
         're': .d,
@@ -40,6 +43,9 @@ class CryptogramScheme {
   /// See [Musical cryptogram](https://en.wikipedia.org/wiki/Musical_cryptogram#French).
   const CryptogramScheme.french()
     : name = 'French',
+      notationSystem = const RomanceNoteNotation.symbol(
+        noteNameNotation: FrenchNoteNameNotation(),
+      ),
       patterns = const {
         'A': .a,
         'B': .b,
@@ -76,6 +82,9 @@ class CryptogramScheme {
   /// (Alain).
   const CryptogramScheme.frenchVariant()
     : name = 'French variant',
+      notationSystem = const RomanceNoteNotation.symbol(
+        noteNameNotation: FrenchNoteNameNotation(),
+      ),
       patterns = const {
         'A': .a,
         'B': .b,
@@ -115,6 +124,7 @@ class CryptogramScheme {
   /// See [Musical cryptogram](https://en.wikipedia.org/wiki/Musical_cryptogram#German).
   const CryptogramScheme.german()
     : name = 'German',
+      notationSystem = const GermanNoteNotation(),
       patterns = const {
         'As': Note(.a, .flat),
         'Ais': Note(.a, .sharp),
@@ -170,10 +180,10 @@ class CryptogramScheme {
   /// Example:
   /// ```dart
   /// const CryptogramScheme.german().cryptogramOf('Bach')
-  ///   == [Note.b.flat, Note.a, Note.c, Note.b]
+  ///   == <Note>[.b.flat, .a, .c, .b]
   ///
   /// const CryptogramScheme.frenchVariant().cryptogramOf('Alain')
-  ///   == [Note.a, Note.d, Note.a, Note.a, Note.f]
+  ///   == <Note>[.a, .d, .a, .a, .f]
   /// ```
   List<Note> cryptogramOf(String name) {
     final seenMatches = <Match>[];
@@ -199,8 +209,44 @@ class CryptogramScheme {
   bool operator ==(Object other) =>
       other is CryptogramScheme &&
       name == other.name &&
-      patterns == other.patterns;
+      const MapEquality<String, Note>().equals(patterns, other.patterns);
 
   @override
   int get hashCode => Object.hash(name, patterns);
+}
+
+/// The French notation system for [NoteName].
+final class FrenchNoteNameNotation extends StringNotationSystem<NoteName> {
+  /// Creates a new [FrenchNoteNameNotation].
+  const FrenchNoteNameNotation();
+
+  static final _noteNames = <NoteName, String>{
+    .c: 'Do',
+    .d: 'Ré',
+    .e: 'Mi',
+    .f: 'Fa',
+    .g: 'Sol',
+    .a: 'La',
+    .b: 'Si',
+  };
+
+  static final _regExp = RegExp(
+    '(?<noteName>${_noteNames.values.join('|')})',
+    caseSensitive: false,
+  );
+
+  @override
+  RegExp get regExp => _regExp;
+
+  @override
+  NoteName parseMatch(RegExpMatch match) {
+    final name = match.namedGroup('noteName')!.toLowerCase();
+
+    return _noteNames.entries
+        .firstWhere((entry) => entry.value.toLowerCase() == name)
+        .key;
+  }
+
+  @override
+  String format(NoteName noteName) => _noteNames[noteName]!;
 }

@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:diacritic/diacritic.dart';
 import 'package:flutter/material.dart';
 
@@ -154,7 +155,10 @@ class Alphabet {
   bool operator ==(Object other) =>
       other is Alphabet &&
       name == other.name &&
-      _letterToNumber == other._letterToNumber;
+      const MapEquality<String, int>().equals(
+        _letterToNumber,
+        other._letterToNumber,
+      );
 
   @override
   int get hashCode => Object.hash(name, _letterToNumber);

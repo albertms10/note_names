@@ -15,7 +15,8 @@ class NoteCards extends StatelessWidget {
         runSpacing: 8,
         crossAxisAlignment: .end,
         children: [
-          for (final note in name.musicalCryptogram) NoteCard(note: note),
+          for (final note in name.musicalCryptogram)
+            NoteCard(label: note.format(name.scheme.notationSystem)),
         ],
       ),
     );

@@ -35,7 +35,7 @@ class _CryptogramSectionState extends State<CryptogramSection> {
           bottom: BorderSide(color: color.withValues(alpha: 0.4), width: 2),
         ),
       ),
-      clipBehavior: Clip.antiAlias,
+      clipBehavior: .antiAlias,
       child: Stack(
         children: [
           Align(

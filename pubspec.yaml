@@ -9,10 +9,11 @@ environment:
   flutter: ^3.38.0
 
 dependencies:
+  collection: ^1.19.1
   diacritic: ^0.1.6
   flutter:
     sdk: flutter
-  music_notes: ^0.24.0
+  music_notes: ^0.25.0
 
 dev_dependencies:
   flutter_test:

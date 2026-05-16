@@ -50,7 +50,7 @@ class _NameSectionState extends State<NameSection> {
                 ),
               ),
             ),
-            clipBehavior: Clip.antiAlias,
+            clipBehavior: .antiAlias,
             child: Stack(
               children: [
                 Align(
